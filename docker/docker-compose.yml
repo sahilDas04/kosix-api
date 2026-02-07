@@ -1,5 +1,5 @@
 version: "3.9"
-
+name: "kosix"
 services:
   postgres:
     container_name: kosix-postgres
