@@ -1,5 +1,7 @@
 from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
+from uuid import UUID
+from datetime import datetime
 
 
 class LoginRequest(BaseModel):
@@ -41,3 +43,37 @@ class PasswordChangeRequest(BaseModel):
 class EmailVerificationRequest(BaseModel):
     """Schema for email verification request."""
     token: str
+
+
+class TokenResponse(BaseModel):
+    """Schema for token response."""
+    access_token: str
+    refresh_token: str
+    token_type: str = "bearer"
+    expires_in: int
+
+
+class RefreshTokenRequest(BaseModel):
+    """Schema for refresh token request."""
+    refresh_token: str
+
+
+class AccountResponse(BaseModel):
+    """Schema for account response."""
+    id: UUID
+    email: str
+    name: Optional[str] = None
+    username: str
+    role: str
+    avatar_url: Optional[str] = None
+    email_verified: bool
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class AuthResponse(BaseModel):
+    """Schema for authentication response."""
+    account: AccountResponse
+    tokens: TokenResponse
