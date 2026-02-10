@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from app.core.config import settings
 from app.routes.auth import router as auth_router
 from app.routes.teams import router as teams_router
+from app.routes.uploads import router as uploads_router
 
 app = FastAPI(
     title="API",
@@ -13,6 +14,7 @@ app = FastAPI(
 # Include routers
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(teams_router, prefix="/api/v1")
+app.include_router(uploads_router, prefix="/api/v1")
 
 
 @app.get("/")
