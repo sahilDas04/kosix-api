@@ -33,6 +33,14 @@ from app.schemas.auth import (
     PasswordChangeRequest,
     EmailVerificationRequest,
 )
+from app.schemas.upload import (
+    FileType,
+    UploadStatus,
+    FileUploadBase,
+    FileUploadCreate,
+    FileUploadUpdate,
+    FileUploadResponse,
+)
 
 __all__ = [
     # Account schemas
@@ -66,4 +74,11 @@ __all__ = [
     "PasswordResetConfirm",
     "PasswordChangeRequest",
     "EmailVerificationRequest",
+    # Upload schemas
+    "FileType",
+    "UploadStatus",
+    "FileUploadBase",
+    "FileUploadCreate",
+    "FileUploadUpdate",
+    "FileUploadResponse",
 ]
